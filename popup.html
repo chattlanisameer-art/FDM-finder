@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="popup.css" />
+  <title>FBM Finder</title>
+</head>
+<body>
+  <header class="app-header">
+    <div class="logo">FBM<span>Finder</span></div>
+    <div class="tagline">Top Facebook Marketplace deals near you</div>
+  </header>
+
+  <main>
+    <section id="form-section">
+      <label class="field">
+        <span class="field-label">What are you looking for?</span>
+        <input
+          id="keywords"
+          type="text"
+          placeholder="e.g. iphone 13, mountain bike, dyson"
+          autocomplete="off"
+        />
+        <small class="hint">Separate multiple products with commas.</small>
+      </label>
+
+      <label class="field">
+        <span class="field-label">Max price (optional, $)</span>
+        <input id="maxPrice" type="number" min="0" step="1" placeholder="No limit" />
+      </label>
+
+      <label class="field">
+        <span class="field-label">Max distance (miles)</span>
+        <input id="radius" type="number" min="1" step="1" value="25" />
+        <small class="hint">Uses your Facebook Marketplace location. Items farther than this are filtered out when distance is shown.</small>
+      </label>
+
+      <label class="field">
+        <span class="field-label">
+          Deal strength: <strong id="dealValue">15%</strong> below typical price
+        </span>
+        <input id="dealStrength" type="range" min="0" max="60" step="5" value="15" />
+        <small class="hint">Only show items priced at least this much under the median of comparable listings.</small>
+      </label>
+
+      <button id="findBtn" class="primary-btn">Find Deals</button>
+    </section>
+
+    <section id="status-section" class="hidden">
+      <div class="spinner"></div>
+      <p id="statusText">Scanning Facebook Marketplace…</p>
+      <button id="cancelBtn" class="link-btn">Cancel</button>
+    </section>
+
+    <section id="results-section" class="hidden">
+      <div class="results-header">
+        <h2 id="resultsTitle">Top deals</h2>
+        <button id="newSearchBtn" class="link-btn">New search</button>
+      </div>
+      <ul id="results-list"></ul>
+      <p id="emptyState" class="empty hidden"></p>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>Reads listings from your logged-in Facebook session.</span>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
