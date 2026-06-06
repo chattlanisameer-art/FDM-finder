@@ -9,19 +9,20 @@
 <body>
   <header class="app-header">
     <div class="logo">FBM<span>Finder</span></div>
-    <div class="tagline">Top Facebook Marketplace deals near you</div>
+    <div class="tagline">Find deals &amp; estimate your sell odds</div>
   </header>
 
+  <nav class="tabs">
+    <button id="tab-find" class="tab active" data-tab="find">Find Deals</button>
+    <button id="tab-sell" class="tab" data-tab="sell">Sell Estimator</button>
+  </nav>
+
   <main>
-    <section id="form-section">
+    <!-- FIND DEALS -->
+    <section id="form-section" class="tab-panel">
       <label class="field">
         <span class="field-label">What are you looking for?</span>
-        <input
-          id="keywords"
-          type="text"
-          placeholder="e.g. iphone 13, mountain bike, dyson"
-          autocomplete="off"
-        />
+        <input id="keywords" type="text" placeholder="e.g. iphone 13, mountain bike, dyson" autocomplete="off" />
         <small class="hint">Separate multiple products with commas.</small>
       </label>
 
@@ -37,9 +38,7 @@
       </label>
 
       <label class="field">
-        <span class="field-label">
-          Deal strength: <strong id="dealValue">15%</strong> below typical price
-        </span>
+        <span class="field-label">Deal strength: <strong id="dealValue">15%</strong> below typical price</span>
         <input id="dealStrength" type="range" min="0" max="60" step="5" value="15" />
         <small class="hint">Only show items priced at least this much under the median of comparable listings.</small>
       </label>
@@ -47,19 +46,52 @@
       <button id="findBtn" class="primary-btn">Find Deals</button>
     </section>
 
-    <section id="status-section" class="hidden">
+    <!-- SELL ESTIMATOR -->
+    <section id="sell-section" class="tab-panel hidden">
+      <label class="field">
+        <span class="field-label">What are you selling?</span>
+        <input id="sellKeyword" type="text" placeholder="e.g. iphone 13 128gb" autocomplete="off" />
+        <small class="hint">Be specific (model, size, condition) for a better estimate.</small>
+      </label>
+
+      <label class="field">
+        <span class="field-label">Your asking price (optional, $)</span>
+        <input id="sellPrice" type="number" min="0" step="1" placeholder="See chance at every price" />
+      </label>
+
+      <button id="estimateBtn" class="primary-btn">Estimate Sell Chance</button>
+      <small class="hint" style="margin-top:8px;">
+        Estimates how likely your item is to sell based on how your price compares to the
+        live market of similar listings. Lower than the competition = higher chance.
+      </small>
+    </section>
+
+    <!-- STATUS -->
+    <section id="status-section" class="tab-panel hidden">
       <div class="spinner"></div>
       <p id="statusText">Scanning Facebook Marketplace…</p>
       <button id="cancelBtn" class="link-btn">Cancel</button>
     </section>
 
-    <section id="results-section" class="hidden">
+    <!-- DEALS RESULTS -->
+    <section id="results-section" class="tab-panel hidden">
       <div class="results-header">
         <h2 id="resultsTitle">Top deals</h2>
         <button id="newSearchBtn" class="link-btn">New search</button>
       </div>
       <ul id="results-list"></ul>
       <p id="emptyState" class="empty hidden"></p>
+    </section>
+
+    <!-- SELL ESTIMATE RESULTS -->
+    <section id="sell-results-section" class="tab-panel hidden">
+      <div class="results-header">
+        <h2 id="sellResultsTitle">Sell estimate</h2>
+        <button id="newSellBtn" class="link-btn">New estimate</button>
+      </div>
+      <div id="sell-summary"></div>
+      <div id="sell-curve"></div>
+      <p id="sellEmptyState" class="empty hidden"></p>
     </section>
   </main>
 

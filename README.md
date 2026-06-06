@@ -18,6 +18,30 @@ and returns the **top 10 deals** — each with a direct link to the listing.
    scores them, and shows the **top 10**, sorted by how good the deal is.
 5. Each result has a **“See on Facebook Marketplace →”** link straight to the item.
 
+## Two modes
+
+The popup has two tabs:
+
+- **Find Deals** — find the best listings to *buy*.
+- **Sell Estimator** — you're *selling*? Enter your item (and optionally your asking
+  price) and it shows your **estimated chance of selling at every price point**, plus a
+  suggested *quick-sale* price and *top-dollar* price.
+
+## How the Sell Estimator works
+
+There's no public Facebook sales database, so it estimates demand from the **live
+market**: it pulls comparable listings and models that an item is more likely to sell
+the more competitors it undercuts. So `chance(price) ≈ the share of comparable listings
+priced above your price`. Price at the cheap end of the market → high sell chance; price
+above most listings → low chance. You get a price→chance curve, plus:
+
+- **Quick-sale price** (~75% chance — the 25th percentile of the market)
+- **Top-dollar price** (~25% chance — the 75th percentile)
+- A verdict on **your** asking price if you enter one.
+
+It's a relative-positioning estimate, not a guarantee — it doesn't see condition,
+photos, or how long items actually took to sell.
+
 ## How the “deal” score works
 
 There's no public Facebook price database, so FBM Finder is self-contained: for each

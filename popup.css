@@ -45,6 +45,29 @@ body {
   margin-top: 2px;
 }
 
+.tabs {
+  display: flex;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 11px 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+
+.tab.active {
+  color: var(--fb-blue);
+  border-bottom-color: var(--fb-blue);
+}
+
 main {
   padding: 14px 16px;
 }
@@ -248,6 +271,96 @@ input[type="range"] {
   text-align: center;
   padding: 20px;
   line-height: 1.5;
+}
+
+/* Sell estimator */
+.sell-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.sell-stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.sell-stat .label {
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.sell-stat .value {
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.your-price-callout {
+  background: #e7f3ff;
+  border: 1px solid var(--fb-blue);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.your-price-callout strong {
+  font-size: 16px;
+}
+
+.curve-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin: 4px 0 8px;
+}
+
+.curve-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.curve-row.highlight .curve-price {
+  color: var(--fb-blue);
+}
+
+.curve-price {
+  width: 58px;
+  font-weight: 700;
+  font-size: 13px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.curve-bar-wrap {
+  flex: 1;
+  background: var(--bg);
+  border-radius: 6px;
+  height: 18px;
+  overflow: hidden;
+}
+
+.curve-bar {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.3s;
+}
+
+.curve-pct {
+  width: 38px;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
 }
 
 .app-footer {
